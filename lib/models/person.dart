@@ -1,3 +1,4 @@
+import 'package:cidade_segura/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 class Person with ChangeNotifier {
@@ -15,6 +16,20 @@ class Person with ChangeNotifier {
     required this.imageUrl,
     this.isAssassin = false,
   });
+
+  Map<String, Object> toJson() {
+    return {
+      kName: name,
+      kApelido: apelido,
+      kMotherName: motherName,
+      kAddress: address,
+      kAnotation: anotation,
+      kCellphone: cellphone,
+      kImageUrl:
+          'http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png',
+      kIsAssassin: false,
+    };
+  }
 
   void assasin() {
     isAssassin = true;

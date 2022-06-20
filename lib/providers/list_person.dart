@@ -1,11 +1,13 @@
+import 'dart:convert';
 import 'dart:math';
-
+import 'package:http/http.dart' as http;
 import 'package:cidade_segura/utils/constants.dart';
 import 'package:flutter/material.dart';
 
 import '../models/person.dart';
 
 class PersonListProvider with ChangeNotifier {
+  final _baseUrl = 'https://cidade-segura-8c427-default-rtdb.firebaseio.com/';
   bool showAssassinOnly = false;
   final List<Person> _personList = kItems;
 
@@ -36,14 +38,36 @@ class PersonListProvider with ChangeNotifier {
       anotation: data['anotation'] as String,
       cellphone: data['cellPhone'] as String,
       imageUrl:
-          'http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png',
+          data['imageUrl'] as String,
     );
     if (hasId) {
       updatePerson(person);
     } else {
-      _personList.add(person);
+      addPerson(person);
       notifyListeners();
     }
+  }
+
+  void addPerson(Person person) {
+    final future = http.post(
+      Uri.parse('$_baseUrl/person.json'),
+      body: jsonEncode(person.toJson()),
+    );
+    future.then((response) {
+      //print(response.body); usei para obter o name (id) do realtime
+      final id = jsonDecode(response.body)['name'];
+      _personList.add(Person(
+          id: id,
+          name: person.name,
+          apelido: person.apelido,
+          motherName: person.motherName,
+          address: person.address,
+          anotation: person.anotation,
+          cellphone: person.cellphone,
+          imageUrl: person.imageUrl));
+      notifyListeners();
+    });
+
   }
 
   void updatePerson(Person person) {

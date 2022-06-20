@@ -1,7 +1,7 @@
 import 'package:cidade_segura/components/custom_page.dart';
 import 'package:cidade_segura/components/person_info_card_detail.dart';
 import 'package:cidade_segura/models/person.dart';
-import 'package:cidade_segura/utils/constants.dart';
+import 'package:cidade_segura/pages/person_edit_form_page.dart';
 import 'package:flutter/material.dart';
 
 class PersonPerfilPage extends StatefulWidget {
@@ -57,7 +57,8 @@ class _PersonPerfilPageState extends State<PersonPerfilPage> {
       floatingActionButton: FloatingActionButton(
         backgroundColor: Theme.of(context).colorScheme.secondary,
         onPressed: () {
-          Navigator.of(context).pushReplacementNamed(kPERSONCADFORM, arguments: person);
+          Navigator.of(context).pushReplacement(MaterialPageRoute(
+              builder: (context) => PersonEditFormPage(person: person)));
         },
         child: const Icon(Icons.edit),
       ),

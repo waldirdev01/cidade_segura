@@ -1,12 +1,16 @@
+import 'package:cidade_segura/components/get_image.dart';
 import 'package:cidade_segura/pages/home_page.dart';
 import 'package:cidade_segura/pages/person_cadastro_form_page.dart';
 import 'package:cidade_segura/pages/person_perfil_page.dart';
 import 'package:cidade_segura/providers/list_person.dart';
 import 'package:cidade_segura/utils/constants.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp();
   runApp(const MyApp());
 }
 
@@ -19,7 +23,7 @@ class MyApp extends StatelessWidget {
     return MultiProvider(
       providers: [
         ChangeNotifierProvider(create: (context) => PersonListProvider()),
-       /* ChangeNotifierProvider(
+        /* ChangeNotifierProvider(
             create: (context) => Person(
                 id: 'id',
                 name: 'name',
@@ -43,7 +47,9 @@ class MyApp extends StatelessWidget {
         routes: {
           kHOME: (context) => const HomePage(),
           kPERSONPERFILPAGE: (context) => const PersonPerfilPage(),
-          kPERSONCADFORM: (context) => const PersonCadastroFormPage(),
+          kPERSONCADFORM: (context) =>
+              const PersonCadastroFormPage(),
+          kGETIMAGE: (context) => const GetImage(),
         },
       ),
     );

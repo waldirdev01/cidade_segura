@@ -1,13 +1,10 @@
 import 'package:cidade_segura/components/custom_page.dart';
 import 'package:cidade_segura/components/person_card.dart';
-import 'package:cidade_segura/providers/list_person.dart';
 import 'package:cidade_segura/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import '../providers/list_person.dart';
 
-import '../models/person.dart';
-
-enum FilterOptions { all, assassin }
 
 class PersonListViewBuider extends StatelessWidget {
   const PersonListViewBuider({
@@ -17,7 +14,7 @@ class PersonListViewBuider extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<PersonListProvider>(context);
-    final List<Person> loadedPerson = provider.personList;
+    final loadedPerson = provider.personList;
     return CustomPage(
       body: Column(
         children: [
@@ -37,7 +34,7 @@ class PersonListViewBuider extends StatelessWidget {
         tooltip: 'Novo cadastro',
         backgroundColor: Theme.of(context).colorScheme.secondary,
         onPressed: () {
-          Navigator.of(context).pushNamed(kPERSONCADFORM);
+          Navigator.of(context).pushNamed(kGETIMAGE);
         },
         child: const Icon(Icons.add),
       ),
