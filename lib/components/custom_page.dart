@@ -40,7 +40,6 @@ class CustomPage extends StatelessWidget {
                     color: Colors.white,
                   ),
                   onTap: () {
-                    provider.showAll();
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => const PersonListViewBuider()));
                   },
@@ -60,7 +59,6 @@ class CustomPage extends StatelessWidget {
                     color: Colors.white,
                   ),
                   onTap: () {
-                    provider.showAssassinOnlyFunction();
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => const PersonListViewBuider()));
                   },
@@ -80,7 +78,6 @@ class CustomPage extends StatelessWidget {
                     color: Colors.white,
                   ),
                   onTap: () {
-                    provider.showAssassinOnly;
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => const PersonListViewBuider()));
                   },
@@ -100,7 +97,6 @@ class CustomPage extends StatelessWidget {
                     color: Colors.white,
                   ),
                   onTap: () {
-                    provider.showAssassinOnly;
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
                         builder: (context) => const PersonListViewBuider()));
                   },

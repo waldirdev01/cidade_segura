@@ -25,8 +25,7 @@ class Person with ChangeNotifier {
       kAddress: address,
       kAnotation: anotation,
       kCellphone: cellphone,
-      kImageUrl:
-          'http://cbissn.ibict.br/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png',
+      kImageUrl: imageUrl,
       kIsAssassin: false,
     };
   }

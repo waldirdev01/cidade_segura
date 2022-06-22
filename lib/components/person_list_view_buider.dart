@@ -6,11 +6,26 @@ import 'package:provider/provider.dart';
 import '../providers/list_person.dart';
 
 
-class PersonListViewBuider extends StatelessWidget {
+class PersonListViewBuider extends StatefulWidget {
   const PersonListViewBuider({
     Key? key,
   }) : super(key: key);
 
+  @override
+  State<PersonListViewBuider> createState() => _PersonListViewBuiderState();
+}
+
+class _PersonListViewBuiderState extends State<PersonListViewBuider> {
+  bool _isLoading = true;
+  @override
+  void initState() {
+    super.initState();
+    Provider.of<PersonListProvider>(context, listen: false)
+        .loadPerson()
+        .then((value) => setState(() {
+      _isLoading = false;
+    }));
+  }
   @override
   Widget build(BuildContext context) {
     final provider = Provider.of<PersonListProvider>(context);
