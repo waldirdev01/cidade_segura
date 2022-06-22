@@ -1,4 +1,4 @@
-import '../models/person.dart';
+
 
 const String kHOME = '/';
 const String kPERSONPERFILPAGE = '/person-perfil-page';

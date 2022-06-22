@@ -1,7 +1,5 @@
 import 'package:cidade_segura/components/person_list_view_buider.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import '../providers/list_person.dart';
 
 class CustomPage extends StatelessWidget {
   const CustomPage({
@@ -18,7 +16,6 @@ class CustomPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final provider = Provider.of<PersonListProvider>(context);
     return Scaffold(
         drawer: Drawer(
           backgroundColor: Theme.of(context).colorScheme.secondary,
@@ -41,7 +38,7 @@ class CustomPage extends StatelessWidget {
                   ),
                   onTap: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const PersonListViewBuider()));
+                        builder: (context) => PersonListViewBuider(showAssassinOnly: false,)));
                   },
                 ),
                 const Divider(),
@@ -60,7 +57,7 @@ class CustomPage extends StatelessWidget {
                   ),
                   onTap: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const PersonListViewBuider()));
+                        builder: (context) =>  PersonListViewBuider(showAssassinOnly: true,)));
                   },
                 ),
                 const Divider(),
@@ -79,7 +76,7 @@ class CustomPage extends StatelessWidget {
                   ),
                   onTap: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const PersonListViewBuider()));
+                        builder: (context) => PersonListViewBuider()));
                   },
                 ),
                 const Divider(),
@@ -98,7 +95,7 @@ class CustomPage extends StatelessWidget {
                   ),
                   onTap: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => const PersonListViewBuider()));
+                        builder: (context) => PersonListViewBuider()));
                   },
                 ),
               ],

@@ -1,5 +1,7 @@
 import 'dart:convert';
+import 'package:cidade_segura/exceptions/http_exception.dart';
 import 'dart:math';
+import 'package:cidade_segura/services/person/storage_service.dart';
 import 'package:http/http.dart' as http;
 import 'package:cidade_segura/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -7,6 +9,7 @@ import 'package:flutter/material.dart';
 import '../models/person.dart';
 
 class PersonListProvider with ChangeNotifier {
+  StorageService service = StorageService();
   final _baseUrl =
       'https://cidade-segura-8c427-default-rtdb.firebaseio.com/person';
   final List<Person> _personList = [];
@@ -20,13 +23,13 @@ class PersonListProvider with ChangeNotifier {
     bool hasId = data['id'] != null;
     final person = Person(
       id: hasId ? data['id'] as String : Random().nextDouble().toString(),
-      name: data['name'] as String,
-      apelido: data['apelido'] as String,
-      motherName: data['motherName'] as String,
-      address: data['address'] as String,
-      anotation: data['anotation'] as String,
-      cellphone: data['cellPhone'] as String,
-      imageUrl: data['imageUrl'] as String,
+      name: data[kName] as String,
+      apelido: data[kApelido] as String,
+      motherName: data[kMotherName] as String,
+      address: data[kAddress] as String,
+      anotation: data[kAnotation] as String,
+      cellphone: data[kCellphone] as String,
+      imageUrl: data[kImageUrl] as String,
     );
     if (hasId) {
       return updatePerson(person);
@@ -45,15 +48,17 @@ class PersonListProvider with ChangeNotifier {
       _personList.add(
         Person(
             id: personId,
-            name: personData['name'],
-            apelido: personData['apelido'],
-            imageUrl: personData['imageUrl'],
-            motherName: personData['motherName'],
-            isAssassin: personData['isAssassin'],
-            anotation: personData['anotation'],
-            address: personData['address'],
-            cellphone: personData['cellphone']),
+            name: personData[kName],
+            apelido: personData[kApelido],
+            imageUrl: personData[kImageUrl],
+            motherName: personData[kMotherName],
+            isAssassin: personData[kIsAssassin],
+            anotation: personData[kAnotation],
+            address: personData[kAddress],
+            cellphone: personData[kCellphone]),
       );
+      _personList.sort(
+          (elemento1, elemento2) => elemento1.name.compareTo(elemento2.name));
     });
     notifyListeners();
   }
@@ -82,20 +87,37 @@ class PersonListProvider with ChangeNotifier {
       final response =
           await http.patch(Uri.parse('$_baseUrl/${person.id}.json'),
               body: jsonEncode({
-                'name': person.name,
-                'apelido': person.apelido,
-                'motherName': person.motherName,
-                'address': person.address,
-                'anotation': person.anotation,
-                'cellphone': person.cellphone
+                kName: person.name,
+                kApelido: person.apelido,
+                kMotherName: person.motherName,
+                kAddress: person.address,
+                kAnotation: person.anotation,
+                kCellphone: person.cellphone
               }));
       _personList[index] = person;
       notifyListeners();
     }
   }
 
-  void deletePerson(Person person) {
-    _personList.remove(person);
-    notifyListeners();
+  Future<void> deletePerson(Person person, String imageURL) async {
+    //exclui o cadastro no aparelho, tenta excluir no firebase e se der erro inclui o cadastro de volta na lista local
+    int index = _personList.indexWhere((element) => element.id == person.id);
+    if (index >= 0) {
+      final person = _personList[index];
+      _personList.remove(person);
+      service.deleteImage(imageURL);
+      notifyListeners();
+      final response =
+          await http.delete(Uri.parse('$_baseUrl/${person.id}.json'));
+      if (response.statusCode >= 400) {
+        _personList.insert(index, person);
+        notifyListeners();
+        throw HttpException(
+            msg: 'Não foi possível excluir o cadastro. Tente mais tarde',
+            statusCode: response.statusCode);
+      }
+      _personList.removeWhere((element) => element.id == person.id);
+      notifyListeners();
+    }
   }
 }

@@ -1,4 +1,5 @@
 import 'package:cidade_segura/providers/list_person.dart';
+import 'package:cidade_segura/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:provider/provider.dart';
@@ -20,27 +21,6 @@ class _PersonCadastroFormPageState extends State<PersonCadastroFormPage> {
   ImagePicker picker = ImagePicker();
   final _formKey = GlobalKey<FormState>();
   final _formData = <String, Object>{};
-
-/*  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    if (_formData.isEmpty) {
-      final argument = ModalRoute.of(context)?.settings.arguments;
-      if (argument != null) {
-        isImage = true;
-        hasPerson = true;
-        final person = argument as Person;
-        _formData['id'] = person.id;
-        _formData['name'] = person.name;
-        _formData['apelido'] = person.apelido;
-        _formData['motherName'] = person.motherName;
-        _formData['address'] = person.address;
-        _formData['anotation'] = person.anotation;
-        _formData['cellPhone'] = person.cellphone;
-        _formData['urlImage'] = person.imageUrl;
-      }
-    }
-  }*/
 
   void _submitForm() {
     final _isValid = _formKey.currentState?.validate() ?? false;
@@ -119,7 +99,7 @@ class _PersonCadastroFormPageState extends State<PersonCadastroFormPage> {
                         return null;
                       },
                       onSaved: (name) {
-                        _formData['name'] = name ?? '';
+                        _formData[kName] = name ?? '';
                         _formData['imageUrl'] = imagemBaixada;
                       },
                     ),
@@ -142,7 +122,7 @@ class _PersonCadastroFormPageState extends State<PersonCadastroFormPage> {
                       ),
                       textInputAction: TextInputAction.next,
                       onSaved: (apelido) =>
-                          _formData['apelido'] = apelido ?? '',
+                          _formData[kApelido] = apelido ?? '',
                     ),
                     const Divider(),
                     TextFormField(
@@ -162,7 +142,7 @@ class _PersonCadastroFormPageState extends State<PersonCadastroFormPage> {
                       ),
                       textInputAction: TextInputAction.next,
                       onSaved: (cellPhone) =>
-                          _formData['cellPhone'] = cellPhone ?? '',
+                          _formData[kCellphone] = cellPhone ?? '',
                     ),
                     const Divider(),
                     TextFormField(
@@ -183,7 +163,7 @@ class _PersonCadastroFormPageState extends State<PersonCadastroFormPage> {
                       ),
                       textInputAction: TextInputAction.next,
                       onSaved: (motherName) =>
-                          _formData['motherName'] = motherName ?? '',
+                          _formData[kMotherName] = motherName ?? '',
                     ),
                     const Divider(),
                     TextFormField(
@@ -204,7 +184,7 @@ class _PersonCadastroFormPageState extends State<PersonCadastroFormPage> {
                       ),
                       textInputAction: TextInputAction.next,
                       onSaved: (address) =>
-                          _formData['address'] = address ?? '',
+                          _formData[kAddress] = address ?? '',
                     ),
                     const Divider(),
                     TextFormField(
@@ -224,7 +204,7 @@ class _PersonCadastroFormPageState extends State<PersonCadastroFormPage> {
                             const TextStyle(fontSize: 18, color: Colors.black),
                       ),
                       onSaved: (anotation) =>
-                          _formData['anotation'] = anotation ?? '',
+                          _formData[kAnotation] = anotation ?? '',
                       onFieldSubmitted: (_) {
                         final _isValid =
                             _formKey.currentState?.validate() ?? false;

@@ -26,11 +26,11 @@ class _PersonPerfilPageState extends State<PersonPerfilPage> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     SizedBox(
-                        height: 300,
+                        height: 400,
                         width: MediaQuery.of(context).size.width,
                         child: Image.network(
                           person.imageUrl,
-                          fit: BoxFit.cover,
+                          fit: BoxFit.contain,
                         )),
                     const Divider(),
                     SingleChildScrollView(

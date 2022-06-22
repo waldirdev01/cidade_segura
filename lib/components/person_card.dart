@@ -1,4 +1,3 @@
-
 import 'package:cidade_segura/providers/list_person.dart';
 import 'package:cidade_segura/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -56,15 +55,17 @@ class PersonCard extends StatelessWidget {
                                         Navigator.of(context).pop(false);
                                       },
                                       child: const Text('Cancelar',
-                                          style:
-                                              TextStyle(color: Colors.white, fontSize: 18))),
+                                          style: TextStyle(
+                                              color: Colors.white,
+                                              fontSize: 18))),
                                   const SizedBox(
                                     width: 30,
                                   ),
                                   TextButton(
                                     onPressed: () {
                                       Navigator.of(context).pop(true);
-                                      personList.deletePerson(person);
+                                      personList.deletePerson(
+                                          person, person.imageUrl);
                                       ScaffoldMessenger.of(context)
                                           .showSnackBar(const SnackBar(
                                               content: Text(
@@ -74,7 +75,8 @@ class PersonCard extends StatelessWidget {
                                     },
                                     child: const Text(
                                       'Excluir',
-                                      style: TextStyle(color: Colors.white, fontSize: 18),
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 18),
                                     ),
                                   ),
                                 ],
@@ -151,17 +153,15 @@ class PersonCard extends StatelessWidget {
                       TextButton(
                           onPressed: () {
                             Navigator.of(context).pop(false);
-                            person.isNotassasin();
+                            person.toggleAssassin();
                           },
                           child: const Text('Excluir dos homicidas.',
-                              style: TextStyle(color: Colors.white, fontSize: 18))),
-                      const SizedBox(
-                        width: 30,
-                      ),
+                              style: TextStyle(
+                                  color: Colors.white, fontSize: 18))),
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).pop(true);
-                          person.assasin();
+                          person.toggleAssassin();
                         },
                         child: const Text(
                           'Incluir como homicida.',
