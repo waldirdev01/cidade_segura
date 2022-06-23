@@ -68,7 +68,7 @@ class PersonListProvider with ChangeNotifier {
 
   Future<void> addPerson(Person person) async {
     final response = await http.post(
-      Uri.parse('$_baseUrl.json'),
+      Uri.parse('$_baseUrl.json?auth=$_token'),
       body: jsonEncode(person.toJson()),
     );
     final id = jsonDecode(response.body)['name'];
@@ -88,7 +88,7 @@ class PersonListProvider with ChangeNotifier {
     int index = _personList.indexWhere((element) => element.id == person.id);
     if (index >= 0) {
       final response =
-          await http.patch(Uri.parse('$_baseUrl/${person.id}.json'),
+          await http.patch(Uri.parse('$_baseUrl/${person.id}.json?auth=$_token'),
               body: jsonEncode({
                 kName: person.name,
                 kApelido: person.apelido,
@@ -111,7 +111,7 @@ class PersonListProvider with ChangeNotifier {
       service.deleteImage(imageURL);
       notifyListeners();
       final response =
-          await http.delete(Uri.parse('$_baseUrl/${person.id}.json'));
+          await http.delete(Uri.parse('$_baseUrl/${person.id}.json?auth=$_token'));
       if (response.statusCode >= 400) {
         _personList.insert(index, person);
         notifyListeners();

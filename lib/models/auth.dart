@@ -2,11 +2,13 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import '../exceptions/auth_exception.dart';
+
 class Auth with ChangeNotifier {
   String? _token;
   String? _email;
   String? _uid;
   DateTime? _expiryDate;
+  String? _imageUrl;
 
   bool get isAuth {
     final isValid = _expiryDate?.isAfter(DateTime.now()) ?? false;
@@ -24,12 +26,17 @@ class Auth with ChangeNotifier {
   String? get uid {
     return isAuth ? _uid : null;
   }
+
+  set imageUrl(String imageUrl) {
+    _imageUrl = imageUrl;
+  }
+
   static const _url =
       'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='
       'AIzaSyBYA_TidEVvBGoafdoRhgdjQoXw7dU9Um4';
 
-  Future<void> _authenticate(
-      String email, String password, String urlFragment) async {
+  Future<void> _authenticate(String email, String password, String urlFragment,
+      [String? imageUrl]) async {
     final url =
         'https://identitytoolkit.googleapis.com/v1/accounts:$urlFragment?key='
         'AIzaSyBYA_TidEVvBGoafdoRhgdjQoXw7dU9Um4';
@@ -39,6 +46,7 @@ class Auth with ChangeNotifier {
         'email': email,
         'password': password,
         'returnSecureToken': true,
+        'imageUrl': imageUrl,
       }),
     );
 
@@ -60,8 +68,8 @@ class Auth with ChangeNotifier {
     }
   }
 
-  Future<void> signup(String email, String password) async {
-    return _authenticate(email, password, 'signUp');
+  Future<void> signup(String email, String password, [String? imageUrl]) async {
+    return _authenticate(email, password, 'signUp', imageUrl);
   }
 
   Future<void> login(String email, String password) async {

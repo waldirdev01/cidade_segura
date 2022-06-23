@@ -37,10 +37,10 @@ class Person with ChangeNotifier {
     isAssassin = !isAssassin;
     notifyListeners();
   }
-  Future<void> toggleAssassin() async {
+  Future<void> toggleAssassin(String token) async {
     try {
       _toggleIsAssassin();
-      final response = await http.patch(Uri.parse('$_baseUrl/$id.json'),
+      final response = await http.patch(Uri.parse('$_baseUrl/$id.json?auth=$token'),
           body: jsonEncode({
             kIsAssassin: isAssassin,
           }));

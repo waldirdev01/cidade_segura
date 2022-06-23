@@ -84,7 +84,7 @@ class _GetImageState extends State<GetImage> {
                 children: [
                   const Divider(),
                   ElevatedButton(
-                    onPressed: () {
+                    onPressed: uploading ? null : () {
                       pickAndUploadImage();
                     },
                     style: ElevatedButton.styleFrom(

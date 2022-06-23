@@ -1,3 +1,4 @@
+import 'package:cidade_segura/models/auth.dart';
 import 'package:cidade_segura/models/list_person.dart';
 import 'package:cidade_segura/utils/constants.dart';
 import 'package:flutter/material.dart';
@@ -14,6 +15,7 @@ class PersonCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final person = Provider.of<Person>(context, listen: false);
     final personList = Provider.of<PersonListProvider>(context);
+    final auth = Provider.of<Auth>(context, listen: false);
     return Stack(
       fit: StackFit.passthrough,
       children: [
@@ -153,7 +155,7 @@ class PersonCard extends StatelessWidget {
                       TextButton(
                           onPressed: () {
                             Navigator.of(context).pop(false);
-                            person.toggleAssassin();
+                            person.toggleAssassin(auth.token ?? '');
                           },
                           child: const Text('Excluir dos homicidas.',
                               style: TextStyle(
@@ -161,7 +163,7 @@ class PersonCard extends StatelessWidget {
                       TextButton(
                         onPressed: () {
                           Navigator.of(context).pop(true);
-                          person.toggleAssassin();
+                          person.toggleAssassin(auth.token ?? '');
                         },
                         child: const Text(
                           'Incluir como homicida.',
