@@ -1,5 +1,9 @@
 import 'package:cidade_segura/components/person_list_view_buider.dart';
+import 'package:cidade_segura/utils/constants.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import '../models/auth.dart';
 
 class CustomPage extends StatelessWidget {
   const CustomPage({
@@ -38,7 +42,9 @@ class CustomPage extends StatelessWidget {
                   ),
                   onTap: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => PersonListViewBuider(showAssassinOnly: false,)));
+                        builder: (context) => PersonListViewBuider(
+                              showAssassinOnly: false,
+                            )));
                   },
                 ),
                 const Divider(),
@@ -57,7 +63,9 @@ class CustomPage extends StatelessWidget {
                   ),
                   onTap: () {
                     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) =>  PersonListViewBuider(showAssassinOnly: true,)));
+                        builder: (context) => PersonListViewBuider(
+                              showAssassinOnly: true,
+                            )));
                   },
                 ),
                 const Divider(),
@@ -94,8 +102,8 @@ class CustomPage extends StatelessWidget {
                     color: Colors.white,
                   ),
                   onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => PersonListViewBuider()));
+                    Provider.of<Auth>(context, listen: false).logout();
+                    Navigator.of(context).pushReplacementNamed(kAUTH_OR_HOME);
                   },
                 ),
               ],

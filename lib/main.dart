@@ -43,7 +43,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         routes: {
-          AUTH_OR_HOME: (context) => const AuthOrHomePage(),
+          kAUTH_OR_HOME: (context) => const AuthOrHomePage(),
           kPERSONPERFILPAGE: (context) => const PersonPerfilPage(),
           kPERSONCADFORM: (context) => const PersonCadastroFormPage(),
           kGETIMAGE: (context) => const GetImage(),
