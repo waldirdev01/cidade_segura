@@ -2,7 +2,7 @@ import 'package:cidade_segura/models/person.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
-import '../providers/list_person.dart';
+import '../models/list_person.dart';
 import 'home_page.dart';
 
 class PersonEditFormPage extends StatefulWidget {

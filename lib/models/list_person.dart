@@ -1,23 +1,26 @@
 import 'dart:convert';
 import 'package:cidade_segura/exceptions/http_exception.dart';
 import 'dart:math';
-import 'package:cidade_segura/services/person/storage_service.dart';
+import 'package:cidade_segura/services/storage_service.dart';
 import 'package:http/http.dart' as http;
 import 'package:cidade_segura/utils/constants.dart';
 import 'package:flutter/material.dart';
 
-import '../models/person.dart';
+import 'person.dart';
 
 class PersonListProvider with ChangeNotifier {
+  final String _token;
   StorageService service = StorageService();
   final _baseUrl =
       'https://cidade-segura-8c427-default-rtdb.firebaseio.com/person';
-  final List<Person> _personList = [];
+  List<Person> _personList = [];
 
   List<Person> get personList => [..._personList];
 
   List<Person> get assassins =>
       _personList.where((person) => person.isAssassin).toList();
+
+  PersonListProvider(this._token, this._personList);
 
   Future<void> personFromMap(Map<String, Object> data) {
     bool hasId = data['id'] != null;
@@ -40,7 +43,7 @@ class PersonListProvider with ChangeNotifier {
 
   Future<void> loadPerson() async {
     _personList.clear();
-    final response = await http.get(Uri.parse('$_baseUrl.json'));
+    final response = await http.get(Uri.parse('$_baseUrl.json?auth=$_token'));
     if (response.body == 'null') return;
 
     Map<String, dynamic> data = jsonDecode(response.body);

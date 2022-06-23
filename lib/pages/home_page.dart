@@ -1,5 +1,5 @@
 import 'package:cidade_segura/components/person_list_view_buider.dart';
-import 'package:cidade_segura/providers/list_person.dart';
+import 'package:cidade_segura/models/list_person.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 

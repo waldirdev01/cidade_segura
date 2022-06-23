@@ -6,7 +6,7 @@ import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 
-import '../services/person/storage_service.dart';
+import '../services/storage_service.dart';
 
 class GetImage extends StatefulWidget {
   const GetImage({Key? key}) : super(key: key);

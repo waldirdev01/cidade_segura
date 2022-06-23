@@ -3,7 +3,7 @@ import 'package:cidade_segura/components/person_card.dart';
 import 'package:cidade_segura/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import '../providers/list_person.dart';
+import '../models/list_person.dart';
 
 class PersonListViewBuider extends StatefulWidget {
   PersonListViewBuider({Key? key, this.showAssassinOnly}) : super(key: key);

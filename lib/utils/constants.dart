@@ -1,6 +1,5 @@
 
-
-const String kHOME = '/';
+const String AUTH_OR_HOME = '/';
 const String kPERSONPERFILPAGE = '/person-perfil-page';
 const String kPERSONCADFORM = '/person-cad-form';
 const String kPERSONEDIFORM = '/person-edit-form';
