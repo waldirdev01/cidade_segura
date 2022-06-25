@@ -1,14 +1,12 @@
 import 'dart:io';
-
 import 'package:cidade_segura/components/user_image_picker.dart';
-import 'package:image_picker/image_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
 import '../exceptions/auth_exception.dart';
 import '../models/auth.dart';
 
-enum AuthMode { Signup, Login }
+enum AuthMode { signup, login }
 
 class AuthForm extends StatefulWidget {
   const AuthForm({Key? key}) : super(key: key);
@@ -21,22 +19,22 @@ class _AuthFormState extends State<AuthForm> {
   final _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
-  AuthMode _authMode = AuthMode.Login;
+  AuthMode _authMode = AuthMode.login;
   Map<String, String> _authData = {
     'email': '',
     'password': '',
   };
 
-  bool _isLogin() => _authMode == AuthMode.Login;
+  bool _isLogin() => _authMode == AuthMode.login;
 
-  bool _isSignup() => _authMode == AuthMode.Signup;
+  bool _isSignup() => _authMode == AuthMode.signup;
 
   void _switchAuthMode() {
     setState(() {
       if (_isLogin()) {
-        _authMode = AuthMode.Signup;
+        _authMode = AuthMode.signup;
       } else {
-        _authMode = AuthMode.Login;
+        _authMode = AuthMode.login;
       }
     });
   }
@@ -100,9 +98,7 @@ class _AuthFormState extends State<AuthForm> {
   }
 
   void _handleImagePick(File image) {
-
     Auth().imageUrl = image.path;
-
   }
 
   @override
@@ -193,7 +189,7 @@ class _AuthFormState extends State<AuthForm> {
                         ),
                       ),
                       child: Text(
-                        _authMode == AuthMode.Login ? 'ENTRAR' : 'REGISTRAR',
+                        _authMode == AuthMode.login ? 'ENTRAR' : 'REGISTRAR',
                       ),
                     ),
                   TextButton(

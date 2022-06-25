@@ -71,6 +71,12 @@ class _PersonEditFormPageState extends State<PersonEditFormPage> {
                         initialValue: widget.person.name,
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                    width: 2, color: Colors.black),
+                                borderRadius: BorderRadius.circular(12)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8)),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8)),
                             labelText: 'Nome do Indivíduo',

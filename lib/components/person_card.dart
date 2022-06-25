@@ -157,19 +157,12 @@ class PersonCard extends StatelessWidget {
                             Navigator.of(context).pop(false);
                             person.toggleAssassin(auth.token ?? '');
                           },
-                          child: const Text('Excluir dos homicidas.',
+                          child: Text(
+                              person.isAssassin
+                                  ? 'Excluir dos homicidas.'
+                                  : 'Incluir como homicida.',
                               style: TextStyle(
                                   color: Colors.white, fontSize: 18))),
-                      TextButton(
-                        onPressed: () {
-                          Navigator.of(context).pop(true);
-                          person.toggleAssassin(auth.token ?? '');
-                        },
-                        child: const Text(
-                          'Incluir como homicida.',
-                          style: TextStyle(color: Colors.white, fontSize: 18),
-                        ),
-                      ),
                     ],
                   ),
                 );

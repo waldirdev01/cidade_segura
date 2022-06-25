@@ -33,15 +33,12 @@ class Auth with ChangeNotifier {
   set imageUrl(String imageUrl) {
     _imageUrl = imageUrl;
   }
-
   static const _url =
-      'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key='
-      'AIzaSyBYA_TidEVvBGoafdoRhgdjQoXw7dU9Um4';
+      'https://identitytoolkit.googleapis.com/v1/accounts:';
 
   Future<void> _authenticate(String email, String password, String urlFragment,
       [String? imageUrl]) async {
-    final url =
-        'https://identitytoolkit.googleapis.com/v1/accounts:$urlFragment?key='
+    final url = '$_url$urlFragment?key='
         'AIzaSyBYA_TidEVvBGoafdoRhgdjQoXw7dU9Um4';
     final response = await http.post(
       Uri.parse(url),
