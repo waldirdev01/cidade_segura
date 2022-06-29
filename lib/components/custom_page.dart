@@ -83,8 +83,7 @@ class CustomPage extends StatelessWidget {
                     color: Colors.white,
                   ),
                   onTap: () {
-                    Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        builder: (context) => PersonListViewBuider()));
+                    Navigator.of(context).pushReplacementNamed(kCHATPAGE);
                   },
                 ),
                 const Divider(),
@@ -145,7 +144,7 @@ class CustomPage extends StatelessWidget {
           title: SizedBox(
               height: 60,
               width: 100,
-              child: Image.asset('assets/images/logo_fundo_branco.jpg')),
+              child: Image.asset('assets/images/logo.png')),
         ),
         body: body,
         floatingActionButton: floatingActionButton,

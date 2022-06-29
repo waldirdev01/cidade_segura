@@ -65,6 +65,8 @@ class _PersonEditFormPageState extends State<PersonEditFormPage> {
                         )),
                     const Divider(),
                     TextFormField(
+                        showCursor: true,
+                        cursorColor: Colors.black,
                         textCapitalization: TextCapitalization.words,
                         key: nomeKey,
                         style: const TextStyle(fontSize: 24),
@@ -90,11 +92,19 @@ class _PersonEditFormPageState extends State<PersonEditFormPage> {
                         }),
                     const Divider(),
                     TextFormField(
+                      showCursor: true,
+                      cursorColor: Colors.black,
                       key: apelidoKey,
                       initialValue: widget.person.apelido,
                       keyboardType: TextInputType.text,
                       textCapitalization: TextCapitalization.words,
                       decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  width: 2, color: Colors.black),
+                              borderRadius: BorderRadius.circular(12)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8)),
                           labelText: 'Apelido',
@@ -109,13 +119,21 @@ class _PersonEditFormPageState extends State<PersonEditFormPage> {
                     ),
                     const Divider(),
                     TextFormField(
+                      showCursor: true,
+                      cursorColor: Colors.black,
                       key: telefoneKey,
                       initialValue: widget.person.cellphone,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  width: 2, color: Colors.black),
+                              borderRadius: BorderRadius.circular(12)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8)),
-                          labelText: 'telefone',
+                          labelText: 'Telefone',
                           labelStyle: const TextStyle(fontSize: 24)),
                       validator: (String? value) {
                         if (value == null || value.isEmpty) {
@@ -127,15 +145,23 @@ class _PersonEditFormPageState extends State<PersonEditFormPage> {
                     ),
                     const Divider(),
                     TextFormField(
+                        showCursor: true,
+                        cursorColor: Colors.black,
                         textCapitalization: TextCapitalization.words,
                         key: maeKey,
                         style: const TextStyle(fontSize: 24),
                         initialValue: widget.person.motherName,
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                    width: 2, color: Colors.black),
+                                borderRadius: BorderRadius.circular(12)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8)),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8)),
-                            labelText: 'Nome da mae',
+                            labelText: 'Nome da mãe',
                             labelStyle: const TextStyle(fontSize: 24)),
                         validator: (String? value) {
                           if (value == null || value.isEmpty) {
@@ -146,12 +172,20 @@ class _PersonEditFormPageState extends State<PersonEditFormPage> {
                         }),
                     const Divider(),
                     TextFormField(
+                        showCursor: true,
+                        cursorColor: Colors.black,
                         textCapitalization: TextCapitalization.words,
                         key: enderecoKey,
                         style: const TextStyle(fontSize: 24),
                         initialValue: widget.person.address,
                         keyboardType: TextInputType.text,
                         decoration: InputDecoration(
+                            enabledBorder: OutlineInputBorder(
+                                borderSide: const BorderSide(
+                                    width: 2, color: Colors.black),
+                                borderRadius: BorderRadius.circular(12)),
+                            focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(8)),
                             border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(8)),
                             labelText: 'Endereço',
@@ -165,10 +199,18 @@ class _PersonEditFormPageState extends State<PersonEditFormPage> {
                         }),
                     const Divider(),
                     TextFormField(
+                      showCursor: true,
+                      cursorColor: Colors.black,
                       key: anotacoesKey,
                       initialValue: widget.person.anotation,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
+                          enabledBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  width: 2, color: Colors.black),
+                              borderRadius: BorderRadius.circular(12)),
+                          focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8)),
                           border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(8)),
                           labelText: 'Anotações',

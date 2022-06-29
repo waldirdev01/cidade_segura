@@ -26,9 +26,9 @@ class AuthOrHomePage extends StatelessWidget {
               // TODO: Handle this case.
               break;
             case ConnectionState.done:
-              return auth.isAuth ? HomePage() : AuthPage();
+              return auth.isAuth ? const HomePage() : AuthPage();
           }
-          return Center(
+          return const Center(
             child: Text('Erro inesperado'),
           );
         });

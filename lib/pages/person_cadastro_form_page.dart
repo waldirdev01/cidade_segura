@@ -67,6 +67,8 @@ class _PersonCadastroFormPageState extends State<PersonCadastroFormPage> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     TextFormField(
+                      showCursor: true,
+                      cursorColor: Colors.black,
                       textCapitalization: TextCapitalization.words,
                       style: const TextStyle(fontSize: 24),
                       keyboardType: TextInputType.text,
@@ -105,6 +107,8 @@ class _PersonCadastroFormPageState extends State<PersonCadastroFormPage> {
                     ),
                     const Divider(),
                     TextFormField(
+                      showCursor: true,
+                      cursorColor: Colors.black,
                       keyboardType: TextInputType.text,
                       textCapitalization: TextCapitalization.words,
                       decoration: InputDecoration(
@@ -126,6 +130,8 @@ class _PersonCadastroFormPageState extends State<PersonCadastroFormPage> {
                     ),
                     const Divider(),
                     TextFormField(
+                      showCursor: true,
+                      cursorColor: Colors.black,
                       keyboardType: TextInputType.phone,
                       decoration: InputDecoration(
                         focusedBorder: OutlineInputBorder(
@@ -146,6 +152,8 @@ class _PersonCadastroFormPageState extends State<PersonCadastroFormPage> {
                     ),
                     const Divider(),
                     TextFormField(
+                      showCursor: true,
+                      cursorColor: Colors.black,
                       textCapitalization: TextCapitalization.words,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
@@ -167,6 +175,8 @@ class _PersonCadastroFormPageState extends State<PersonCadastroFormPage> {
                     ),
                     const Divider(),
                     TextFormField(
+                      showCursor: true,
+                      cursorColor: Colors.black,
                       textCapitalization: TextCapitalization.words,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
@@ -188,6 +198,8 @@ class _PersonCadastroFormPageState extends State<PersonCadastroFormPage> {
                     ),
                     const Divider(),
                     TextFormField(
+                      showCursor: true,
+                      cursorColor: Colors.black,
                       textCapitalization: TextCapitalization.words,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(

@@ -38,7 +38,7 @@ class _PersonListViewBuiderState extends State<PersonListViewBuider> {
         child: Center(
                 child: Column(
                   children: [
-                    Image.asset('assets/images/logo_fundo_branco.jpg'),
+                    Image.asset('assets/images/logo.png'),
                     const Text('Não há cadastros ainda.', style: TextStyle(fontSize: 24),),
                   ],
                 ),
